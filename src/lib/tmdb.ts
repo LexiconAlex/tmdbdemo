@@ -10,11 +10,13 @@ const options = {
   },
 };
 
-export async function getMovies(): Promise<Movie[]> {
+export async function getMovies(page: string): Promise<Movie[]> {
+  console.log(page);
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=" + page,
     options
   );
   const data = await response.json();
+  console.log(data);
   return data.results;
 }
